@@ -6,12 +6,12 @@ spring:
         druid:
             # 主库数据源
             master:
-#                url: jdbc:mysql://123.57.63.56:3306/weigh-cloud?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-#                username: weigh-cloud
-#                password: weigh-cloud
-                url: jdbc:mysql://127.0.0.1:3306/weighcloud?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-                username: weighcloud
-                password: weighcloud
+                url: jdbc:mysql://123.57.63.56:3306/weigh-cloud?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+                username: weigh-cloud
+                password: weigh-cloud
+#                url: jdbc:mysql://127.0.0.1:3306/weighcloud?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+#                username: weighcloud
+#                password: weighcloud
             # 从库数据源
             slave:
                 # 从数据源开关/默认关闭
