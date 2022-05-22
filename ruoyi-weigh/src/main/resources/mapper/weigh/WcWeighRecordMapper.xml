@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.weigh.mapper.WcWeighRecordMapper">
+    <select id="selectWcWeighRecordList" resultType="com.ruoyi.weigh.domain.WcWeighRecord">
+        select * from wc_weigh_record wr
+        left join sys_user u on u.user_id = wr.user_id
+        left join sys_dept d on d.dept_id = wr.dept_id
+        <where>
+            <if test="goodsName != null  and goodsName != ''">
+                and goods_name like concat('%', #{goodsName}, '%')
+            </if>
+            <if test="goodsType != null  and goodsType != ''">
+                and goods_type = #{goodsType}
+            </if>
+            <if test="plateNumber != null  and plateNumber != ''">
+                and plate_number = #{plateNumber}
+            </if>
+            <!-- 数据范围过滤 -->
+            ${params.dataScope}
+        </where>
+    </select>
+</mapper>

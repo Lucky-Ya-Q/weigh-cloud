@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.weigh.mapper.WcExtendFieldMapper">
+    <select id="selectWcExtendFieldList" resultType="com.ruoyi.weigh.domain.WcExtendField">
+        select *
+        from wc_extend_field ef
+        left join sys_user u on u.user_id = ef.user_id
+        left join sys_dept d on d.dept_id = ef.dept_id
+        <where>
+            <if test="code != null  and code != ''">
+                and code = #{code}
+            </if>
+            <if test="name != null  and name != ''">
+                and name like concat('%', #{name}, '%')
+            </if>
+            <!-- 数据范围过滤 -->
+            ${params.dataScope}
+        </where>
+    </select>
+</mapper>
