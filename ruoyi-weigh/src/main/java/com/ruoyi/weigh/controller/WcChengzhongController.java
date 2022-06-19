@@ -111,4 +111,16 @@ public class WcChengzhongController extends BaseController
     {
         return toAjax(wcChengzhongService.removeBatchByIds(Arrays.asList(ids)));
     }
+
+    /**
+     * 插入称重
+     */
+    @ApiOperation("插入称重")
+    @PreAuthorize("@ss.hasPermi('weigh:chengzhong:add')")
+    @Log(title = "称重", businessType = BusinessType.INSERT)
+    @PostMapping("/insert")
+    public AjaxResult insert(WcChengzhong wcChengzhong)
+    {
+        return toAjax(wcChengzhongService.save(wcChengzhong));
+    }
 }
