@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.weigh.mapper.WcChengzhongMapper">
+    <select id="selectWcChengzhongList" resultType="com.ruoyi.weigh.domain.WcChengzhong">
+        select *
+        from wc_chengzhong c
+        left join sys_user u on u.user_id = c.user_id
+        left join sys_dept d on d.dept_id = c.dept_id
+        <where>
+            <if test="chepai != null  and chepai != ''"> and chepai = #{chepai}</if>
+            <if test="params.beginTime1 != null and params.beginTime1 != '' and params.endTime1 != null and params.endTime1 != ''"> and time1 between #{params.beginTime1} and #{params.endTime1}</if>
+            <if test="params.beginTime2 != null and params.beginTime2 != '' and params.endTime2 != null and params.endTime2 != ''"> and time2 between #{params.beginTime2} and #{params.endTime2}</if>
+            <if test="fahuo != null  and fahuo != ''"> and fahuo like concat('%', #{fahuo}, '%')</if>
+            <if test="shouhuo != null  and shouhuo != ''"> and shouhuo like concat('%', #{shouhuo}, '%')</if>
+            <if test="yunshu != null  and yunshu != ''"> and yunshu like concat('%', #{yunshu}, '%')</if>
+            <!-- 数据范围过滤 -->
+            ${params.dataScope}
+        </where>
+    </select>
+</mapper>

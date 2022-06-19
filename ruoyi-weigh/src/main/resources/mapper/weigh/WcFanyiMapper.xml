@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.weigh.mapper.WcFanyiMapper">
+
+<select id="selectWcFanyiList" resultType="com.ruoyi.weigh.domain.WcFanyi">
+    select * from wc_fanyi
+    <where>
+        <if test="fieldLabel != null  and fieldLabel != ''"> and field_label like concat('%', #{fieldLabel}, '%')</if>
+    </where>
+    </select>
+</mapper>
